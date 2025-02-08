@@ -11258,3 +11258,14 @@ body {
 .bands p {
   padding-left: 0.625rem;
 }
+
+.about-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  }
+
+  .about-link:hover {
+    color: #b3b3b3;
+  }
+
