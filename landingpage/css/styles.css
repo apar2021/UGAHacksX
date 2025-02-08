@@ -11217,3 +11217,11 @@ body {
 .big-arrow:active {
   color: black;
 }
+
+.about-section {
+  padding-bottom: 330px;
+}
+
+.about-section h2 {
+  padding-top: 50px
+}
