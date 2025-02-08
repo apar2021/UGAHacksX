@@ -16,6 +16,12 @@ class AtlasClient():
         else:
             print('Rockserver Database already exists!')
 
+    def insert_test_data(self):
+        with open("generation/band_members.json", 'r') as f:
+            self.database.rock_member.insert_many(json.loads(f.read()))
+        with open("generation/bands.json", 'r') as f:
+            self.database.rock_band.insert_many(json.loads(f.read()))
+
     def list_databases(self):
         print(self.client.list_database_names())
 

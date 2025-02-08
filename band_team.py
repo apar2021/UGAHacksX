@@ -4,6 +4,6 @@ class BandTeam:
             self._id = _id
         self.name = name
         self.goals = goals
+        self.looking_for = looking_for
         self.members = members
         self.member_count = member_count
-        self.looking_for = looking_for
