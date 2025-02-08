@@ -10986,7 +10986,6 @@ body {
 #mainNav {
   min-height: 3.5rem;
   background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, .05));;
-  padding-bottom: 30px;
 }
 #mainNav .navbar-toggler {
   font-size: 80%;
@@ -11210,7 +11209,7 @@ body {
 
 .big-arrow {
   font-size: 2em;
-  margin-top: 70px;
+  margin-top: 4.375rem;
   color: black;
 }
 
@@ -11219,9 +11218,138 @@ body {
 }
 
 .about-section {
-  padding-bottom: 330px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/bg-about.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  padding-top: 6.25rem;
 }
 
 .about-section h2 {
-  padding-top: 50px
+  padding-top: 3.125rem;
+}
+
+.musicians {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.musicians img {
+  width: 10%;
+  height: 10%;
+ filter: invert(100%);
+}
+
+.bands {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.bands img {
+  width: 10%;
+  height: 10%;
+  filter: invert(100%);
+  padding-right: 0.625rem;
+}
+
+.bands p {
+  padding-left: 0.625rem;
+}
+
+.about-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  }
+
+  .about-link:hover {
+    color: #b3b3b3;
+  }
+
+.artist-profile-section {
+  padding-top: 6.25rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/bg-artist.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.artist-profile-section label {
+  color: white;
+  padding: 0.5rem;
+}
+
+.signup-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+}
+
+#signup.container {
+  background-color: black;
+  padding: 0;
+  width: 100%;
+  max-width: 2000px;
+  padding-bottom: 100px;
+  padding-top: 200px;
+}
+
+.signup-register h2 {
+  margin: 0 30px;
+  border: 5px solid white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+h2 a {
+  text-decoration: none;
+  color: white;
+}
+
+h2 a:hover {
+  color: white;
+}
+
+h2:hover {
+  transform: scale(1.1);
+}
+
+form .form-control {
+  border: 2px solid var(--bs-gray-400);
+  font-size: 17px;
+  max-width: 300px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+}
+
+form .form-control:focus {
+  border: 2px solid white;
+}
+form .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.band-profile-section {
+  padding-top: 6.25rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/bg-band.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.artist-profile-section label {
+  color: white;
+  padding: 0.5rem;
 }
