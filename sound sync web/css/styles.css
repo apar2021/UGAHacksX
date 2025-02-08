@@ -11209,7 +11209,7 @@ body {
 
 .big-arrow {
   font-size: 2em;
-  margin-top: 70px;
+  margin-top: 4.375rem;
   color: black;
 }
 
@@ -11218,17 +11218,16 @@ body {
 }
 
 .about-section {
-  padding-bottom: 330px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/bg-about.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-  padding-top: 100px;
+  padding-top: 6.25rem;
 }
 
 .about-section h2 {
-  padding-top: 50px;
+  padding-top: 3.125rem;
 }
 
 .musicians {
@@ -11253,9 +11252,9 @@ body {
   width: 10%;
   height: 10%;
   filter: invert(100%);
-  padding-right: 10px;
+  padding-right: 0.625rem;
 }
 
 .bands p {
-  padding-left: 10px
+  padding-left: 0.625rem;
 }
