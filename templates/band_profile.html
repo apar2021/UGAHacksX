@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Band Profile of Alex Carter" />
-    <meta name="author" content="Alex Carter" />
-    <title>Band Profile - Alex Carter</title>
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title> Band Profile </title>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../static/css/styles.css" rel="stylesheet" />
+        </head>
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -80,42 +84,42 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Sound Sync</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="band-recs.html">Bands</a></li>
-                    <li class="nav-item"><a class="nav-link" href="artist-recs.html">Artists</a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Sound Sync</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Recommendations
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="band-recs.html">Bands</a></li>
+                        <li><a class="dropdown-item" href="artist-recs.html">Artists</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <section class="band-profile-section text-center">
+      <section class="band-profile-section text-center">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8">
                     <div class="card">
-                        <h2 class="text-white mb-4">Alex Carter</h2>
-                        <img src="guitar2.png" alt="Alex Carter" class="profile-img mb-4" />
-                        <p class="text-white">Instrument: Bass Guitar</p>
-                        <p class="text-white">Collaboration Types: Songwriting, Live Performances</p>
-                        <p class="text-white">Profile Created: 2025-02-07</p>
-
-                        <h4 class="text-white">Social Links</h4>
-                        <div class="social-links">
-                            <p><a href="https://spotify.com/user/alexcarter" target="_blank" rel="noopener noreferrer"><i class="fab fa-spotify"></i> Spotify</a></p>
-                            <p><a href="https://instagram.com/alexcartermusic" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a></p>
-                        </div>
-                        <h4 class="text-white">Team</h4>
-                        <p class="text-white">Team ID: 123444</p>
-                    </div>
+                        <h2 class="text-white mb-4">Welcome to Your Profile, {{ profile_data.username }}</h2>
+                        <p class="text-white">Username: {{ profile_data.username }}</p>
+                        <p class="text-white">Name: {{ profile_data.name }}</p>
+                        <p class="text-white">Bio: {{ profile_data.bio }}</p>
+                        <p class="text-white">Looking for: {{ profile_data.looking_for }}</p>
+                        <p class="text-white">Goals: {{ profile_data.goals }}</p>
                 </div>
             </div>
         </div>
