@@ -15,8 +15,7 @@ client.ping()
 # member = RockMember("Test Username", "Pass123", "Test Name", ["Flute", "Drums"], ["Jamming"], [{"spotify":"link.com"}], [{"team_id":232}])
 # band = RockTeam("Band Name", ["Goal 1", "Goal 2"], ["Drums", "Triangle"], [{'member_id': 2910231, 'name': 'Sophie Green', 'role': 'Drums', 'instrument': 'Drums'},
 # {'member_id': 34567, 'name': 'Alex Carter', 'role': 'Bassist', 'instrument': 'Bass Guitar'}], 2)
-# client.setup()
-# client.insert_test_data()
+client.setup()
 # cursor = client.find_members()
 # for m in cursor:
 #     print(m)
@@ -26,8 +25,9 @@ client.ping()
 #     print(b)
 # client.insert_member(member)
 # client.insert_band(band)
-# client.recommend_members('67a7bd6da5f1605082d17b50')
-client.recommend_band('67a7c30e7752110613d4373b')
+
+client.recommend_members('67a825af9e794325dc4e27c9')
+client.recommend_band('67a825ad9e794325dc4e23e1')
 client.list_databases()
 
 
