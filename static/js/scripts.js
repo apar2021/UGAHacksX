@@ -52,36 +52,4 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-document.getElementById('band-profile-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const profileData = {
-        username: document.getElementById('username').value,
-        password: document.getElementById('password').value,
-        name: document.getElementById('bandname').value,
-        genre: document.getElementById('genre').value,
-        instrument: document.getElementById('instrument').value,
-        collab_type: document.getElementById('collab-types').value,
-        bio: document.getElementById('bio').value
-    };
-
-    fetch('http://127.0.0.1:5000/band-register', {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(profileData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        alert("Profile Submitted Successfully!");
-        document.getElementById('band-profile-form').reset();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert("Error Registering!");
-    });
-});
-
 });
