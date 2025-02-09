@@ -1,3 +1,12 @@
+/*!
+* Start Bootstrap - Grayscale v7.0.6 (https://startbootstrap.com/theme/grayscale)
+* Copyright 2013-2023 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
+*/
+//
+// Scripts
+// 
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
@@ -14,7 +23,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
     };
 
-    // Shrink the navbar
+    // Shrink the navbar 
     navbarShrink();
 
     // Shrink the navbar when page is scrolled
@@ -36,8 +45,10 @@ window.addEventListener('DOMContentLoaded', event => {
     );
     responsiveNavItems.map(function (responsiveNavItem) {
         responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
+            if (!responsiveNavItem.classList.contains('dropdown-toggle')) {
+                if (window.getComputedStyle(navbarToggler).display !== 'none') {
                 navbarToggler.click();
+                }
             }
         });
     });
