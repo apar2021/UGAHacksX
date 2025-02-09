@@ -11373,3 +11373,30 @@ form button:active {
   background-color: var(--bs-gray-400);
   color: black;
 }
+
+.gallery-section {
+  padding-top: 10.25rem;
+  padding-bottom: 6.25rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/bg-bandrecs.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ul li {
+  list-style-type: none;
+  text-align: center;
+}
+
+.card-text {
+  text-align: start;
+  padding: 0px;
+}
