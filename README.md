@@ -18,15 +18,15 @@ Sound Sync is a web platform designed to help musicians find their perfect bandm
 ### 1. Getting MongoDB and JavaScript to work together:
     Difficulties in setting up and integrating MongoDB with our backend
 ###     Solution:
-        We read through documentation, debugged errors, and tested for a smooth connection.
+    We read through documentation, debugged errors, and tested for a smooth connection.
 ### 2. Choosing a frontend framework
     Initially considered Streamlit but realized that the python usage was too heavy. Tried using Figma.
 ###     Solution:
-        Switched to HTML, CSS, and JavaScript for better flexibility.
+    Switched to HTML, CSS, and JavaScript for better flexibility.
 ### 3. Lack of time
     With a limited timeframe, we struggled to implement all of our desired features.
 ###     Solution:
-        We prioritized core functionalities, sacrificed non-essential features, and divided tasks efficiently.
+    We prioritized core functionalities, sacrificed non-essential features, and divided tasks efficiently.
 # Public Frameworks
 - OpenAI API
 - MongoDB Atlas
