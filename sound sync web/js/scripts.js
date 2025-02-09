@@ -45,8 +45,10 @@ window.addEventListener('DOMContentLoaded', event => {
     );
     responsiveNavItems.map(function (responsiveNavItem) {
         responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
+            if (!responsiveNavItem.classList.contains('dropdown-toggle')) {
+                if (window.getComputedStyle(navbarToggler).display !== 'none') {
                 navbarToggler.click();
+                }
             }
         });
     });
