@@ -7,7 +7,21 @@ https://youtu.be/1qnvcM7gZ94
 - Jovita Chang
 - Raj Sureka
 # Project Overview
-Sound Sync is a web platform designed to help musicians find their perfect bandmates and bands find their missing member. By creating a user profile, including instruments played, collaboration types they wish for, genres they want to play, etc, artists can be matched with the band that fits their style. Bands can also create profiles to search for the right members, making it easier to connect with aspiring musicians.
+Sound Sync is an AI-powered music collaboration platform that helps musicians find their perfect musical match. The platform combines sophisticated matching algorithms with OpenAI's GPT model to provide personalized recommendations. Here's how it works:
+Smart Matching Algorithm: The platform uses a weighted scoring system that considers:
+Instrument compatibility (40% weight)
+Genre preferences (30% weight)
+Collaboration types (30% weight)
+AI-Powered Insights: OpenAI's GPT model analyzes detailed bios and preferences to provide personalized recommendations with explanations of why certain matches would work well together.
+Dual-Sided Matching: The platform serves both:
+Individual musicians looking for bands
+Bands looking for new members
+Comprehensive Profiles: Users can specify:
+Multiple instruments they play
+Various genres they're interested in
+Different types of collaboration they're open to
+Detailed bios about their musical journey and aspirations
+The AI integration adds a human-like understanding to the matching process, considering nuanced factors like musical style, artistic vision, and potential chemistry between musicians that go beyond simple keyword matching.
 # Tools Utilized
 - HTML/CSS
 - JavaScript
