@@ -161,14 +161,20 @@ def band_recs():
 @app.route("/artist-recs")
 def artist_recs():
     try:
-        # Open and read the JSON file
-        with open('test.json', 'r') as f:
-            data = json.load(f)
+        # Get the current user's ID from the session
+        user_id = session.get('user_id')
+        if not user_id:
+            flash('Please log in to view recommendations')
+            return redirect(url_for('login'))
 
-        # Pass the JSON data to the template
-        return render_template('artist-recs.html', data=data)
+        # Get recommendations using the new matching system
+        matches = client.recommend_band(user_id)
+        
+        # Pass the matches to the template
+        return render_template('artist-recs.html', matches=matches)
 
     except Exception as e:
-        return f"Error reading JSON data: {e}"
+        flash(f'Error getting recommendations: {str(e)}')
+        return redirect(url_for('index'))
 if __name__ == "__main__":
     app.run(debug=True)

@@ -5,6 +5,8 @@ from pymongo.server_api import ServerApi
 from bson import ObjectId
 from generate_data import DataGenerator
 from openai_client import OpenAIClient
+from typing import List, Dict, Any
+import math
 
 
 class AtlasClient():
@@ -52,69 +54,114 @@ class AtlasClient():
         items = list(collection.find(filter=filter, limit=limit))
         return items
 
-    def recommend_members(self, band_id):
+    def calculate_match_score(self, band: Dict[str, Any], member: Dict[str, Any]) -> float:
+        """Calculate a match score between a band and a member based on multiple factors."""
+        score = 0.0
+        weights = {
+            'instruments': 0.4,
+            'genres': 0.3,
+            'collaboration_types': 0.3
+        }
+
+        # Calculate instrument match score
+        instrument_matches = set(band['looking_for']['instruments']) & set(member['instruments'])
+        instrument_score = len(instrument_matches) / max(len(band['looking_for']['instruments']), len(member['instruments']))
+        score += instrument_score * weights['instruments']
+
+        # Calculate genre match score
+        genre_matches = set(band['looking_for']['genres']) & set(member['genre'])
+        genre_score = len(genre_matches) / max(len(band['looking_for']['genres']), len(member['genre']))
+        score += genre_score * weights['genres']
+
+        # Calculate collaboration type match score
+        collab_matches = set(band['looking_for']['collaboration_types']) & set(member['collaboration_type'])
+        collab_score = len(collab_matches) / max(len(band['looking_for']['collaboration_types']), len(member['collaboration_type']))
+        score += collab_score * weights['collaboration_types']
+
+        return score
+
+    def recommend_members(self, band_id: str, limit: int = 5) -> List[Dict[str, Any]]:
+        """Recommend members for a band based on multiple matching criteria."""
         band_search = self.find_bands(filter={"_id": ObjectId(band_id)})
-        if band_search:
-            band = band_search[0]
-            print("Band Info")
-            print(band)
-            looking_for_instrument = band['looking_for']['instruments']
-            looking_for_genre = band['looking_for']['genres']
-            looking_for_collab = band['looking_for']['collaboration_types']
-            print()
-            print(looking_for_instrument)
-            print(looking_for_collab)
-            print(looking_for_genre)
-
-            print("")
-            print("Recommended Members")
-            member_search = self.find_members(
-                filter={"$and": [{'instruments': {'$in': looking_for_instrument}},
-                                 {'genre': {'$in': looking_for_genre}},
-                                 {'collaboration_type': {'$in': looking_for_collab}}
-                                 ]})
-            if not member_search:
-                print("No available artists!")
-                return
-            if len(member_search) > 3:
-                member_search = random.sample(member_search, 3)
-            for m in member_search:
-                print(f"{m['name']} | {m['instruments']}, {m['genre']}, {m['collaboration_type']}")
-            self.openai_client.artist_recommendation(band, member_search)
-        else:
+        if not band_search:
             print('No band found!')
+            return []
 
-    def recommend_band(self, member_id):
+        band = band_search[0]
+        print("Band Info:", band)
+
+        # Get all potential members
+        potential_members = self.find_members()
+        
+        # Calculate match scores for each member
+        scored_members = []
+        for member in potential_members:
+            match_score = self.calculate_match_score(band, member)
+            scored_members.append({
+                'member': member,
+                'score': match_score
+            })
+
+        # Sort by match score and get top matches
+        scored_members.sort(key=lambda x: x['score'], reverse=True)
+        top_matches = scored_members[:limit]
+
+        # Print recommendations
+        print("\nRecommended Members:")
+        for match in top_matches:
+            member = match['member']
+            score = match['score']
+            print(f"{member['name']} | Score: {score:.2f}")
+            print(f"Instruments: {member['instruments']}")
+            print(f"Genre: {member['genre']}")
+            print(f"Collaboration Type: {member['collaboration_type']}")
+            print("---")
+
+        # Get AI recommendations
+        self.openai_client.artist_recommendation(band, [m['member'] for m in top_matches])
+        
+        return top_matches
+
+    def recommend_band(self, member_id: str, limit: int = 5) -> List[Dict[str, Any]]:
+        """Recommend bands for a member based on multiple matching criteria."""
         member_search = self.find_members(filter={"_id": ObjectId(member_id)})
-        if member_search:
-            member = member_search[0]
-            print("Member Info")
-            print(member)
-            instruments = member['instruments']
-            genres = member['genre']
-            collab = member['collaboration_type']
-            print()
-            print(instruments)
-            print(collab)
-            print(genres)
-            print("")
-            print("Recommended Bands")
-            band_search = self.find_bands(
-                filter={"$and": [{'looking_for.instruments': {'$in': instruments}},
-                                 {'looking_for.genres': {'$in': genres}},
-                                 {'looking_for.collaboration_types': {'$in': collab}}
-                                 ]})
-            if not band_search:
-                print("No available bands!")
-                return
-            if len(band_search) > 3:
-                band_search = random.sample(band_search, 3)
-            for b in band_search:
-                print(
-                    f"{b['name']} | {b['looking_for']['instruments']}, {b['looking_for']['genres']}, {b['looking_for']['collaboration_types']}")
-            self.openai_client.band_recommendation(member, band_search)
-        else:
+        if not member_search:
             print('No member found!')
+            return []
+
+        member = member_search[0]
+        print("Member Info:", member)
+
+        # Get all potential bands
+        potential_bands = self.find_bands()
+        
+        # Calculate match scores for each band
+        scored_bands = []
+        for band in potential_bands:
+            match_score = self.calculate_match_score(band, member)
+            scored_bands.append({
+                'band': band,
+                'score': match_score
+            })
+
+        # Sort by match score and get top matches
+        scored_bands.sort(key=lambda x: x['score'], reverse=True)
+        top_matches = scored_bands[:limit]
+
+        # Print recommendations
+        print("\nRecommended Bands:")
+        for match in top_matches:
+            band = match['band']
+            score = match['score']
+            print(f"{band['name']} | Score: {score:.2f}")
+            print(f"Looking for: {band['looking_for']}")
+            print(f"Goals: {band['goals']}")
+            print("---")
+
+        # Get AI recommendations
+        self.openai_client.band_recommendation(member, [b['band'] for b in top_matches])
+        
+        return top_matches
 
     def insert_member(self, band_member):
         self.database.rock_member.insert_one(band_member.__dict__)
